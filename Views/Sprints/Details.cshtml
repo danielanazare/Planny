@@ -1,0 +1,20 @@
+﻿@model Planny.Models.Sprint
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Sprint</h2>
+<h2>Name: @Model.Name</h2>
+<p>Start Date: @Model.StartDate</p>
+<p>End Date: @Model.EndDate</p>
+<p>
+    Release:
+    @Html.ActionLink(@Model.Release.Name, "Details", "Releases", new { id = @Model.ReleaseId }, null)
+</p>
+<p> Project: 
+    @Html.ActionLink(@Model.Release.Project.Name, "Details", "Projects", new { id = @Model.Release.ProjectId }, null)
+</p>
+
+

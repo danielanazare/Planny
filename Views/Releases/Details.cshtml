@@ -1,0 +1,17 @@
+﻿@model Planny.Models.Release
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Release</h2>
+
+<h2>Name: @Model.Name</h2>
+<p>StartDate: @Model.StartDate</p>
+<p>End Date: @Model.EndDate</p>
+<p>
+    Project: @Html.ActionLink(@Model.Project.Name, "Details", "Projects",
+new { id = @Model.ProjectId }, null)
+</p>
+
+

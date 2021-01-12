@@ -1,0 +1,25 @@
+﻿@model Planny.Models.UserJourney
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<p> Name: @Model.Name
+</p>
+<p>Description: @Model.Description</p>
+<p>Status: @Model.Status</p>
+<p>Priority: @Model.Priority</p>
+<p>
+    Sprint: 
+    @Html.ActionLink(@Model.Sprint.Name, "Details", "Sprints", new {id = @Model.SprintId}, null)
+</p>
+<p>
+    Release:
+    @Html.ActionLink(@Model.Sprint.Release.Name, "Details", "Releases", new {id = @Model.Sprint.ReleaseId}, null)
+</p>
+<p>
+    Project: 
+    @Html.ActionLink(@Model.Sprint.Release.Project.Name, "Details", "Projects", new {id = @Model.Sprint.Release.ProjectId}, null)
+</p>

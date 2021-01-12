@@ -1,0 +1,55 @@
+﻿@using Planny.Controllers
+@using Planny.Models
+@model IEnumerable<Planny.Models.UserJourney>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>User Journeys</h2>
+
+@if (!@Model.Any())
+{
+    <h2>No User Journeys.</h2>
+}
+else
+{
+    <table class="table table-striped table-hover ">
+        <thead>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Priority</th>
+        <th>Sprint</th>
+        <th>Release</th>
+        <th>Project</th>
+        </thead>
+        <tbody>
+            @foreach (var UserJourney in Model)
+            {
+            <tr>
+                <td>
+                    @Html.ActionLink(@UserJourney.Name, "Details", "UserJourneys", new { id = @UserJourney.Id }, null)
+                </td>
+                <td>@UserJourney.Description</td>
+                <td>@UserJourney.Status</td>
+                <td>@UserJourney.Priority</td>
+                <td>
+                    @Html.ActionLink(@UserJourney.Sprint.Name, "Details", "Sprints", new { id = @UserJourney.SprintId }, null)
+                </td>
+                <td>
+                    @Html.ActionLink(@UserJourney.Sprint.Release.Name, "Details", "Releases", new { id = @UserJourney.Sprint.ReleaseId }, null)
+                </td>
+                <td>
+                    @Html.ActionLink(@UserJourney.Sprint.Release.Project.Name, "Details", "Projects", new { id = @UserJourney.Sprint.Release.ProjectId }, null)
+                </td>
+
+            </tr>
+
+            }
+        </tbody>
+    </table>
+}
+
+
+

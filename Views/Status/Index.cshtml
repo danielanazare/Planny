@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Planny.Models.Status>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>statuses</h2>
+
+@if (!@Model.Any())
+{
+    <h2>No statuses.</h2>
+}
+else
+{
+    <table class="table table-striped table-hover ">
+        <thead>
+        <th>Name</th>
+        </thead>
+        <tbody>
+            @foreach (var Status in Model)
+            {
+                <tr>
+                    <td>
+                        @*@Project.Name*@
+                        @Html.ActionLink(@Status.Name, "Details", "Status", new { id = @Status.Id }, null)
+                    </td>
+                </tr>
+
+            }
+        </tbody>
+    </table>
+}
