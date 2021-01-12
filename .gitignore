@@ -1,3 +1,5 @@
+*.mdf
+
 # gitignore template for using Kentico CMS
 # website: http://www.kentico.com/
 #
