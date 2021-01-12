@@ -1,0 +1,47 @@
+﻿@using Planny.Controllers
+@using Planny.Models
+@model IEnumerable<Planny.Models.Time>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Times</h2>
+
+@if (!@Model.Any())
+{
+    <h2>No Times.</h2>
+}
+else
+{
+<table class="table table-striped table-hover ">
+    <thead>
+    <th>Date</th>
+    <th>Time Spent</th>
+    <th>Description</th>
+    <th>Task</th>
+    <th>View</th>
+    </thead>
+    <tbody>
+        @foreach (var Time in Model)
+        {
+            <tr>
+                <td>@Time.Date</td>
+                <td>@Time.TimeSpent h</td>
+                <td>@Time.Description</td>
+                <td>
+                    @Html.ActionLink(@Time.Task.Name, "Details", "ProjectTasks", new { id = @Time.TaskId }, null)
+                </td>
+                <td>
+                    @Html.ActionLink("View", "Details", "Times", new { id = @Time.Id }, null)
+                </td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+}
+
+
+
+

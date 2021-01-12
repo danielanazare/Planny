@@ -1,0 +1,26 @@
+﻿@model Planny.Models.ProjectTask
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Task: @String.Format("{0} {1}", @Model.Id, @Model.Name)</h2>
+<p>Description: @Model.Description</p>
+<p>Status: @Model.Status</p>
+<p>Priority: @Model.Priority</p>
+
+<p>User Journey: 
+    @Html.ActionLink(@Model.UserJourney.Name, "Details", "UserJourneys", new { id = @Model.UserJourneyId}, null)
+</p>
+<p>
+    Sprint:
+    @Html.ActionLink(@Model.UserJourney.Sprint.Name, "Details", "Sprints", new { id = @Model.UserJourney.SprintId }, null)
+</p>
+<p>
+    Release:
+    @Html.ActionLink(@Model.UserJourney.Sprint.Release.Name, "Details", "Releases", new { id = @Model.UserJourney.Sprint.ReleaseId }, null)
+</p>
+<p>
+    Project:
+    @Html.ActionLink(@Model.UserJourney.Sprint.Release.Project.Name, "Details", "Projects", new { id = @Model.UserJourney.Sprint.Release.ProjectId }, null)
+</p>

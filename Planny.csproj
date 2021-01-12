@@ -170,10 +170,66 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PrioritiesController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
+    <Compile Include="Controllers\ProjectTasksController.cs" />
+    <Compile Include="Controllers\ReleasesController.cs" />
+    <Compile Include="Controllers\SprintsController.cs" />
+    <Compile Include="Controllers\StatusController.cs" />
+    <Compile Include="Controllers\TimesController.cs" />
+    <Compile Include="Controllers\UserJourneysController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101120120557_InitialMigration.cs" />
+    <Compile Include="Migrations\202101120120557_InitialMigration.Designer.cs">
+      <DependentUpon>202101120120557_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101120137580_PopulateStatus.cs" />
+    <Compile Include="Migrations\202101120137580_PopulateStatus.Designer.cs">
+      <DependentUpon>202101120137580_PopulateStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101120209326_AddClassesToDataBase.cs" />
+    <Compile Include="Migrations\202101120209326_AddClassesToDataBase.Designer.cs">
+      <DependentUpon>202101120209326_AddClassesToDataBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101120229059_AddClassesToDataBase1.cs" />
+    <Compile Include="Migrations\202101120229059_AddClassesToDataBase1.Designer.cs">
+      <DependentUpon>202101120229059_AddClassesToDataBase1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101120229496_PopulatePriorities.cs" />
+    <Compile Include="Migrations\202101120229496_PopulatePriorities.Designer.cs">
+      <DependentUpon>202101120229496_PopulatePriorities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101120236303_AddDataAnnotation.cs" />
+    <Compile Include="Migrations\202101120236303_AddDataAnnotation.Designer.cs">
+      <DependentUpon>202101120236303_AddDataAnnotation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101120316448_AddTaskName.cs" />
+    <Compile Include="Migrations\202101120316448_AddTaskName.Designer.cs">
+      <DependentUpon>202101120316448_AddTaskName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101120338497_AddUserJourneyName.cs" />
+    <Compile Include="Migrations\202101120338497_AddUserJourneyName.Designer.cs">
+      <DependentUpon>202101120338497_AddUserJourneyName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101120340114_AddDescripionUSerJourney.cs" />
+    <Compile Include="Migrations\202101120340114_AddDescripionUSerJourney.Designer.cs">
+      <DependentUpon>202101120340114_AddDescripionUSerJourney.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101120357411_AddReleaseName.cs" />
+    <Compile Include="Migrations\202101120357411_AddReleaseName.Designer.cs">
+      <DependentUpon>202101120357411_AddReleaseName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101120401108_ReleaseProject.cs" />
+    <Compile Include="Migrations\202101120401108_ReleaseProject.Designer.cs">
+      <DependentUpon>202101120401108_ReleaseProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101120753179_AddSprintName.cs" />
+    <Compile Include="Migrations\202101120753179_AddSprintName.Designer.cs">
+      <DependentUpon>202101120753179_AddSprintName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -246,6 +302,20 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Projects\Index.cshtml" />
     <Content Include="Views\Projects\Details.cshtml" />
+    <Content Include="Views\Priorities\Index.cshtml" />
+    <Content Include="Views\Priorities\Details.cshtml" />
+    <Content Include="Views\ProjectTasks\Index.cshtml" />
+    <Content Include="Views\ProjectTasks\Details.cshtml" />
+    <Content Include="Views\Status\Index.cshtml" />
+    <Content Include="Views\Status\Details.cshtml" />
+    <Content Include="Views\Releases\Index.cshtml" />
+    <Content Include="Views\Releases\Details.cshtml" />
+    <Content Include="Views\Sprints\Index.cshtml" />
+    <Content Include="Views\Sprints\Details.cshtml" />
+    <Content Include="Views\UserJourneys\Index.cshtml" />
+    <Content Include="Views\UserJourneys\Details.cshtml" />
+    <Content Include="Views\Times\Index.cshtml" />
+    <Content Include="Views\Times\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -262,6 +332,44 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202101120120557_InitialMigration.resx">
+      <DependentUpon>202101120120557_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101120137580_PopulateStatus.resx">
+      <DependentUpon>202101120137580_PopulateStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101120209326_AddClassesToDataBase.resx">
+      <DependentUpon>202101120209326_AddClassesToDataBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101120229059_AddClassesToDataBase1.resx">
+      <DependentUpon>202101120229059_AddClassesToDataBase1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101120229496_PopulatePriorities.resx">
+      <DependentUpon>202101120229496_PopulatePriorities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101120236303_AddDataAnnotation.resx">
+      <DependentUpon>202101120236303_AddDataAnnotation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101120316448_AddTaskName.resx">
+      <DependentUpon>202101120316448_AddTaskName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101120338497_AddUserJourneyName.resx">
+      <DependentUpon>202101120338497_AddUserJourneyName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101120340114_AddDescripionUSerJourney.resx">
+      <DependentUpon>202101120340114_AddDescripionUSerJourney.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101120357411_AddReleaseName.resx">
+      <DependentUpon>202101120357411_AddReleaseName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101120401108_ReleaseProject.resx">
+      <DependentUpon>202101120401108_ReleaseProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101120753179_AddSprintName.resx">
+      <DependentUpon>202101120753179_AddSprintName.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -1,0 +1,39 @@
+﻿@model Planny.Models.Time
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Time</h2>
+
+<p>Date: @Model.Date</p>
+<p>Time Spent: @Model.TimeSpent h</p>
+<p>Description: @Model.Description</p>
+<p>
+    Task: @Html.ActionLink(@Model.Task.Name, "Details", "ProjectTasks", new { id = @Model.TaskId }, null)
+</p>
+<p>
+    User Journey:
+    @Html.ActionLink(@Model.Task.UserJourney.Name, "Details", "UserJourneys", new { id = @Model.Task.UserJourneyId }, null)
+</p>
+<p>
+    Sprint:
+    @Html.ActionLink(@Model.Task.UserJourney.Sprint.Name, "Details", "Sprints", new { id = @Model.Task.UserJourney.SprintId }, null)
+</p>
+<p>
+    Release:
+    @Html.ActionLink(@Model.Task.UserJourney.Sprint.Release.Name, "Details", "Releases", new { id = @Model.Task.UserJourney.Sprint.ReleaseId }, null)
+</p>
+<p>
+    Project:
+    @Html.ActionLink(@Model.Task.UserJourney.Sprint.Release.Project.Name, "Details", "Projects", new { id = @Model.Task.UserJourney.Sprint.Release.ProjectId }, null)
+</p>
+
+
+
+
+
+
+
+
+

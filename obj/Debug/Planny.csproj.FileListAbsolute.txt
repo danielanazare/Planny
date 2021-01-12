@@ -106,3 +106,16 @@ G:\Proiect DAW\Planny\obj\Debug\Planny.csproj.CoreCompileInputs.cache
 G:\Proiect DAW\Planny\obj\Debug\Planny.csproj.CopyComplete
 G:\Proiect DAW\Planny\obj\Debug\Planny.dll
 G:\Proiect DAW\Planny\obj\Debug\Planny.pdb
+G:\Proiect DAW\Planny\obj\Debug\Planny.Migrations.InitialMigration.resources
+G:\Proiect DAW\Planny\obj\Debug\Planny.csproj.GenerateResource.cache
+G:\Proiect DAW\Planny\obj\Debug\Planny.Migrations.PopulateStatus.resources
+G:\Proiect DAW\Planny\obj\Debug\Planny.Migrations.AddClassesToDataBase.resources
+G:\Proiect DAW\Planny\obj\Debug\Planny.Migrations.AddClassesToDataBase1.resources
+G:\Proiect DAW\Planny\obj\Debug\Planny.Migrations.PopulatePriorities.resources
+G:\Proiect DAW\Planny\obj\Debug\Planny.Migrations.AddDataAnnotation.resources
+G:\Proiect DAW\Planny\obj\Debug\Planny.Migrations.AddTaskName.resources
+G:\Proiect DAW\Planny\obj\Debug\Planny.Migrations.AddUserJourneyName.resources
+G:\Proiect DAW\Planny\obj\Debug\Planny.Migrations.AddDescripionUSerJourney.resources
+G:\Proiect DAW\Planny\obj\Debug\Planny.Migrations.AddReleaseName.resources
+G:\Proiect DAW\Planny\obj\Debug\Planny.Migrations.ReleaseProject.resources
+G:\Proiect DAW\Planny\obj\Debug\Planny.Migrations.AddSprintName.resources

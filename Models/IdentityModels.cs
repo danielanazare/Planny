@@ -20,6 +20,14 @@ namespace Planny.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<Status> Status { get; set; }
+        public DbSet <Priority> Priority{ get; set; }
+        public DbSet<ProjectTask> ProjectTasks { get; set; }
+        public DbSet<Release> Releases { get; set; }
+        public DbSet<Sprint>Sprint { get; set; }
+        public DbSet<Time> Times { get; set; }
+        public DbSet<UserJourney> UserJourneys { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

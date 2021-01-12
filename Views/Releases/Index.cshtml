@@ -1,0 +1,40 @@
+﻿@using Planny.Controllers
+@using Planny.Models
+@model IEnumerable<Planny.Models.Release>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Releases</h2>
+
+@if (!@Model.Any())
+{
+<h2>No Releases.</h2>
+}
+else
+{
+    <table class="table table-striped table-hover ">
+        <thead>
+        <th>Name</th>
+        </thead>
+        <tbody>
+            @foreach (var Release in Model)
+            {
+            <tr>
+                <td>
+                    @*@Project.Name*@
+                    @Html.ActionLink(Release.Name, "Details", "Releases", new { id = @Release.Id }, null)
+                </td>
+                <td>@Release.StartDate</td>
+                <td>@Release.EndDate</td>
+                <td>@Release.Project.Name</td>
+
+            </tr>
+
+            }
+        </tbody>
+    </table>
+}
+
