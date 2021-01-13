@@ -1,0 +1,20 @@
+﻿@model Planny.Models.Project
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Project</h2>
+
+@using (Html.BeginForm("Save", "Projects"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+    </div>
+    @Html.HiddenFor(m=>m.Id)
+
+    <button class="btn btn-primary">Save</button>
+
+}
+

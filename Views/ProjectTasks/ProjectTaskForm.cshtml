@@ -1,0 +1,37 @@
+﻿@model Planny.ViewModel.ProjectTaskFormViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Task</h2>
+
+
+@* renders <formm and </form> *@
+@using (Html.BeginForm("Save", "ProjectTasks"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.ProjectTask.Name)
+        @Html.TextBoxFor(m => m.ProjectTask.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ProjectTask.Description)
+        @Html.TextBoxFor(m => m.ProjectTask.Description, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ProjectTask.Status)
+        @Html.DropDownListFor(m => m.ProjectTask.Status, new SelectList(Model.Statuses, "Id", "Name"), new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ProjectTask.Priority)
+        @Html.DropDownListFor(m => m.ProjectTask.Priority, new SelectList(Model.Priorities, "Id", "Name"), new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.ProjectTask.UserJourneyId)
+        @Html.DropDownListFor(m => m.ProjectTask.UserJourneyId, new SelectList(Model.UserJourneys, "Id", "Name"), new { @class = "form-control" })
+    </div>
+
+    <button class="btn btn-primary">Save</button>
+
+}
+
