@@ -43,6 +43,17 @@ namespace Planny.Controllers
         [HttpPost]
         public ActionResult Save(UserJourney userJourney)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new UserJourneyFormViewModel
+                {
+                    UserJourney = userJourney,
+                    Sprints = _context.Sprint.ToList(),
+                    Statuses = _context.Status.ToList(),
+                    Priorities = _context.Priority.ToList()
+                };
+                return View("UserJourneyForm", viewModel);
+            }
 
             if (userJourney.Id == 0)
             {

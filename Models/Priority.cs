@@ -10,6 +10,9 @@ namespace Planny.Models
     {
         public int Id { get; set; }
         [Required]
+        [StringLength(255)]
+        [RegularExpression("^[a - zA - Z0 - 9]{4, 10}$", ErrorMessage = "Name must have only letters and numbers")]
+
         public string Name { get; set; }
     }
 }

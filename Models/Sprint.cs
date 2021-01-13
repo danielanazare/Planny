@@ -17,11 +17,13 @@ namespace Planny.Models
         [Required]
         public int ReleaseId { get; set; }
         [Required]
+        [CustomVal]
         public DateTime StartDate { get; set; }
         [Required]
         public DateTime EndDate { get; set; }
         public int? Effort { get; set; } // nr de ore
         public int? TimeSpent { get; set; }
+        [Range(0,100)]
         public byte? Progress { get; set; } //0-100 %
     }
 }

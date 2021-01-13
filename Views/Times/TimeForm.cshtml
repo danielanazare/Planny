@@ -13,14 +13,19 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Time.Date)
         @Html.TextBoxFor(m => m.Time.Date, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.Time.Date)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Time.TimeSpent)
         @Html.TextBoxFor(m => m.Time.TimeSpent, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.Time.TimeSpent)
+
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Time.Description)
         @Html.TextBoxFor(m => m.Time.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.Time.Description)
+
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Time.TaskId)
