@@ -1,0 +1,37 @@
+﻿@model Planny.ViewModel.TimeFormViewModel
+@{
+    ViewBag.Title = "TimeForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Title</h2>
+
+
+@* renders <formm and </form> *@
+@using (Html.BeginForm("Save", "Times"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Time.Date)
+        @Html.TextBoxFor(m => m.Time.Date, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Time.TimeSpent)
+        @Html.TextBoxFor(m => m.Time.TimeSpent, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Time.Description)
+        @Html.TextBoxFor(m => m.Time.Description, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Time.TaskId)
+        @Html.DropDownListFor(m => m.Time.TaskId, new SelectList(Model.ProjectTasks, "Id", "Name"), new { @class = "form-control" })
+    </div>
+
+    @Html.HiddenFor(m => m.Time.Id)
+
+    <button class="btn btn-primary">Save</button>
+
+}
+
+
+

@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Planny.Models;
+using Planny.ViewModel;
 
 namespace Planny.Controllers
 {
@@ -22,6 +23,61 @@ namespace Planny.Controllers
         protected override void Dispose(bool disposing)
         {
             _context.Dispose();
+        }
+
+        public ActionResult New()
+        {
+            var projectTasks = _context.ProjectTasks.ToList();
+
+            var viewModel = new TimeFormViewModel
+            {
+                ProjectTasks = projectTasks
+            };
+            return View("TimeForm", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Time time)
+        {
+
+            if (time.Id == 0)
+            {
+                _context.Times.Add(time); //just in the memory
+            }
+            else
+            {
+                var timeInDb = _context.Times.Single(p => p.Id == time.Id);
+                timeInDb.Description = time.Description;
+                timeInDb.Date = time.Date;
+                timeInDb.TimeSpent = time.TimeSpent;
+                timeInDb.TaskId = time.TaskId;
+            }
+
+            _context.SaveChanges(); //wraps changes in a transaction
+            //try
+            //{
+            //    _context.SaveChanges(); //wraps changes in a transaction
+            //}
+            //catch (DbEntityValidationException e)
+            //{
+            //    Console.WriteLine(e);
+            //}
+
+
+            return RedirectToAction("Index", "Times");
+
+        }
+        public ActionResult Edit(int id)
+        {
+            var time = _context.Times.SingleOrDefault(p => p.Id == id);
+            if (time == null)
+                return HttpNotFound();
+            var viewModel = new TimeFormViewModel
+            {
+                Time = time,
+                ProjectTasks = _context.ProjectTasks.ToList()
+            };
+            return View("TimeForm", viewModel);
         }
 
         public ActionResult Index()

@@ -8,6 +8,10 @@
 
 <h2>Times</h2>
 
+<p>
+    @Html.ActionLink("New Time", "New", "Times", null, new { @class = "btn btn-primary" })
+</p>
+
 @if (!@Model.Any())
 {
     <h2>No Times.</h2>
@@ -25,17 +29,20 @@ else
     <tbody>
         @foreach (var Time in Model)
         {
-            <tr>
-                <td>@Time.Date</td>
-                <td>@Time.TimeSpent h</td>
-                <td>@Time.Description</td>
-                <td>
-                    @Html.ActionLink(@Time.Task.Name, "Details", "ProjectTasks", new { id = @Time.TaskId }, null)
-                </td>
-                <td>
-                    @Html.ActionLink("View", "Details", "Times", new { id = @Time.Id }, null)
-                </td>
-            </tr>
+        <tr>
+            <td>@Time.Date</td>
+            <td>@Time.TimeSpent h</td>
+            <td>@Time.Description</td>
+            <td>
+                @Html.ActionLink(@Time.Task.Name, "Details", "ProjectTasks", new { id = @Time.TaskId }, null)
+            </td>
+            <td>
+                @Html.ActionLink("View", "Details", "Times", new { id = @Time.Id }, null)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", "Times", new { id = @Time.Id }, null)
+            </td>
+        </tr>
 
         }
     </tbody>
