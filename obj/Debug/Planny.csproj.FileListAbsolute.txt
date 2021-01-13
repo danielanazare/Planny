@@ -122,3 +122,4 @@ G:\Proiect DAW\Planny\obj\Debug\Planny.Migrations.AddSprintName.resources
 G:\Proiect DAW\Planny\obj\Debug\Planny.Migrations.SprintNullableAttributes.resources
 G:\Proiect DAW\Planny\obj\Debug\Planny.Migrations.ProjectTaskNullableAttributes.resources
 G:\Proiect DAW\Planny\obj\Debug\Planny.Migrations.DataAnnotations.resources
+G:\Proiect DAW\Planny\obj\Debug\Planny.Migrations.SeedUsers.resources

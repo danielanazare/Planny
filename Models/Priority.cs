@@ -11,7 +11,7 @@ namespace Planny.Models
         public int Id { get; set; }
         [Required]
         [StringLength(255)]
-        [RegularExpression("^[a - zA - Z0 - 9]{4, 10}$", ErrorMessage = "Name must have only letters and numbers")]
+        [RegularExpression(@"^[A-Za-z0-9_'\s-]*$", ErrorMessage = "Only Alphabets and Numbers allowed.")]
 
         public string Name { get; set; }
     }

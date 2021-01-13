@@ -21,6 +21,8 @@ namespace Planny.Controllers
         {
             _context.Dispose();
         }
+
+        [Authorize(Roles = RoleName.CanManageProject)]
         public ActionResult New()
         {
             
@@ -59,8 +61,10 @@ namespace Planny.Controllers
         public ActionResult Index()
         {
             var projects = _context.Projects;
-
-            return View(projects);
+            if (User.IsInRole(RoleName.CanManageProject))
+                return View(projects);
+            
+            return View("ReadOnlyList", projects);
         }
 
      
