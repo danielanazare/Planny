@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Planny.Models;
+using Planny.ViewModel;
 
 namespace Planny.Controllers
 {
@@ -22,6 +24,64 @@ namespace Planny.Controllers
         protected override void Dispose(bool disposing)
         {
             _context.Dispose();
+        }
+
+        public ActionResult New()
+        {
+            var releases = _context.Releases.ToList();
+
+            var viewModel = new SprintFormViewModel()
+            {
+                Releases = releases
+            };
+            return View("SprintForm", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Sprint sprint)
+        {
+
+            if (sprint.Id == 0)
+            {
+                _context.Sprint.Add(sprint); //just in the memory
+            }
+            else
+            {
+                var sprintInDb = _context.Sprint.Single(p => p.Id == sprint.Id);
+                sprintInDb.Name = sprint.Name;
+                sprintInDb.StartDate = sprint.StartDate;
+                sprintInDb.EndDate = sprint.EndDate;
+                sprintInDb.Effort = sprint.Effort;
+                sprintInDb.TimeSpent = sprint.TimeSpent;
+                sprintInDb.Progress = sprint.Progress;
+                sprintInDb.ReleaseId = sprint.ReleaseId;
+            }
+
+            _context.SaveChanges(); //wraps changes in a transaction
+            //try
+            //{
+            //    _context.SaveChanges(); //wraps changes in a transaction
+            //}
+            //catch (DbEntityValidationException e)
+            //{
+            //    Console.WriteLine(e);
+            //}
+
+
+            return RedirectToAction("Index", "Sprints");
+
+        }
+        public ActionResult Edit(int id)
+        {
+            var sprint = _context.Sprint.SingleOrDefault(p => p.Id == id);
+            if (sprint == null)
+                return HttpNotFound();
+            var viewModel = new SprintFormViewModel
+            {
+                Sprint = sprint,
+                Releases = _context.Releases.ToList()
+            };
+            return View("SprintForm", viewModel);
         }
 
         public ActionResult Index()

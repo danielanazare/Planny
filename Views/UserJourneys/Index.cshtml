@@ -8,6 +8,10 @@
 
 <h2>User Journeys</h2>
 
+<p>
+    @Html.ActionLink("New User Journey", "New", "UserJourneys", null, new { @class = "btn btn-primary" })
+</p>
+
 @if (!@Model.Any())
 {
     <h2>No User Journeys.</h2>
@@ -42,6 +46,9 @@ else
                 </td>
                 <td>
                     @Html.ActionLink(@UserJourney.Sprint.Release.Project.Name, "Details", "Projects", new { id = @UserJourney.Sprint.Release.ProjectId }, null)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "UserJourneys", new { id = @UserJourney.Id }, null)
                 </td>
 
             </tr>

@@ -21,7 +21,29 @@ namespace Planny.Controllers
         {
             _context.Dispose();
         }
-        // GET: Projects
+        public ActionResult New()
+        {
+            
+            return View("ProjectForm");
+        }
+
+        [HttpPost]
+        public ActionResult Save(Project project)
+        {
+            if (project.Id == 0)
+            {
+                _context.Projects.Add(project); //just in the memory
+            }
+            else
+            {
+                var projectInDb = _context.Projects.Single(p => p.Id == project.Id);
+                projectInDb.Name = project.Name;
+            }
+
+            _context.SaveChanges(); //wraps changes in a transaction
+
+            return RedirectToAction("Index", "Projects");
+        }
         public ActionResult Index()
         {
             var projects = _context.Projects;
@@ -40,6 +62,14 @@ namespace Planny.Controllers
             }
 
             return View(project);
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var project = _context.Projects.SingleOrDefault(p => p.Id == id);
+            if (project == null)
+                return HttpNotFound();
+            return View("ProjectForm", project);
         }
     }
 }

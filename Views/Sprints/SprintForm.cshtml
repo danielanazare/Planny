@@ -1,0 +1,49 @@
+﻿@model Planny.ViewModel.SprintFormViewModel
+@{
+    ViewBag.Title = "SprintForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Title</h2>
+
+
+@* renders <form and </form> *@
+@using (Html.BeginForm("Save", "Sprints"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Sprint.Name)
+        @Html.TextBoxFor(m => m.Sprint.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Sprint.StartDate)
+        @Html.TextBoxFor(m => m.Sprint.StartDate, "{0:d MMM yyyy}", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Sprint.EndDate)
+        @Html.TextBoxFor(m => m.Sprint.EndDate, "{0:d MMM yyyy}", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Sprint.Effort)
+        @Html.TextBoxFor(m => m.Sprint.Effort, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Sprint.TimeSpent)
+        @Html.TextBoxFor(m => m.Sprint.TimeSpent, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Sprint.Progress)
+        @Html.TextBoxFor(m => m.Sprint.Progress, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Sprint.ReleaseId)
+        @Html.DropDownListFor(m => m.Sprint.ReleaseId, new SelectList(Model.Releases, "Id", "Name"), new { @class = "form-control" })
+    </div>
+
+    @Html.HiddenFor(m => m.Sprint.Id)
+
+
+    <button class="btn btn-primary">Save</button>
+
+}
+
+

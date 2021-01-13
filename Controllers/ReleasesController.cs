@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Planny.Models;
+using Planny.ViewModel;
 
 namespace Planny.Controllers
 {
@@ -25,11 +27,66 @@ namespace Planny.Controllers
             _context.Dispose();
         }
 
+
+        public ActionResult New()
+        {
+            var projects = _context.Projects.ToList();
+            
+            var viewModel = new ReleaseFormViewModel()
+            {
+                Projects = projects
+            };
+            return View("ReleaseForm", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Save(Release release)
+        {
+
+            if (release.Id == 0)
+            {
+                _context.Releases.Add(release); //just in the memory
+            }
+            else
+            {
+                var releaseInDb = _context.Releases.Single(p => p.Id == release.Id);
+                releaseInDb.Name = release.Name;
+                releaseInDb.StartDate = release.StartDate;
+                releaseInDb.EndDate = release.EndDate;
+                releaseInDb.ProjectId = release.ProjectId;
+            }
+
+            _context.SaveChanges(); //wraps changes in a transaction
+            //try
+            //{
+            //    _context.SaveChanges(); //wraps changes in a transaction
+            //}
+            //catch (DbEntityValidationException e)
+            //{
+            //    Console.WriteLine(e);
+            //}
+
+
+            return RedirectToAction("Index", "Releases");
+
+        }
+        public ActionResult Edit(int id)
+        {
+            var release = _context.Releases.SingleOrDefault(p => p.Id == id);
+            if (release == null)
+                return HttpNotFound();
+            var viewModel = new ReleaseFormViewModel
+            {
+                Release = release,
+                Projects = _context.Projects.ToList()
+            };
+            return View("ReleaseForm", viewModel);
+        }
         public ActionResult Index()
         {
-            var releasess = _context.Releases.Include(r => r.Project);
+            var releases = _context.Releases.Include(r => r.Project);
 
-            return View(releasess);
+            return View(releases);
         }
 
 
