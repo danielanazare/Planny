@@ -1,0 +1,62 @@
+﻿@model Planny.ViewModel.ReleaseViewModel
+@{
+    ViewBag.Title = "ReleaseView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Release: @Model.Release.Name</h2>
+<p>StartDate: @Model.Release.StartDate</p>
+<p>End Date: @Model.Release.EndDate</p>
+<p>
+    Project: @Html.ActionLink(@Model.Release.Project.Name, "Details", "Projects",
+                 new { id = @Model.Release.ProjectId }, null)
+</p>
+
+<p>
+    @Html.ActionLink("New Sprint", "New", "Sprints", null, new { @class = "btn btn-success" })
+</p>
+
+<h3>Sprints</h3>
+@if (@Model.Sprintses.Count() == 0)
+{
+    <h2>No Sprints.</h2>
+}
+else
+{
+    <table class="table table-striped table-hover ">
+        <thead>
+        <th>Name</th>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Release</th>
+        <th>Project</th>
+        </thead>
+        <tbody>
+        @foreach (var Sprint in @Model.Sprintses)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(@Sprint.Name, "Details", "Sprints", new { id = @Sprint.Id }, null)
+                </td>
+                <td>@Sprint.StartDate</td>
+                <td>@Sprint.EndDate</td>
+                <td>
+                    @Html.ActionLink(@Sprint.Release.Name, "Details", "Releases", new { id = @Sprint.ReleaseId }, null)
+                </td>
+                <td>
+                    @Html.ActionLink(@Sprint.Release.Project.Name, "Details", "Projects", new { id = @Sprint.Release.ProjectId }, null)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Sprints", new { id = @Sprint.Id }, null)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", "Sprints", new { id = @Sprint.Id }, new { @class = "btn btn-danger" })
+                </td>
+
+            </tr>
+
+        }
+        </tbody>
+    </table>
+}
+

@@ -102,15 +102,37 @@ namespace Planny.Controllers
 
 
 
+        //public ActionResult Details(int id)
+        //{
+        //    var sprint = _context.Sprint
+        //        .Include(s => s.Release)
+        //        .Include(s => s.Release.Project)
+        //        .SingleOrDefault(p => p.Id == id);
+        //    if (sprint == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+
+        //    return View(sprint);
+        //}
+
         public ActionResult Details(int id)
         {
-            var sprint = _context.Sprint.Include(s => s.Release).Include(s => s.Release.Project).SingleOrDefault(p => p.Id == id);
+            var sprint = _context.Sprint
+                .Include(s => s.Release)
+                .Include(s => s.Release.Project)
+                .SingleOrDefault(p => p.Id == id);
             if (sprint == null)
             {
                 return HttpNotFound();
             }
 
-            return View(sprint);
+            var viewModel = new SprintViewModel
+            {
+                Sprint = sprint,
+                UserJourneys = _context.UserJourneys.Where(u => u.SprintId == id)
+            };
+            return View("SprintView", viewModel);
         }
 
         public ActionResult Delete(int id)
