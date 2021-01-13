@@ -111,21 +111,44 @@ namespace Planny.Controllers
 
 
 
+        //public ActionResult Details(int id)
+        //{
+        //    var projectTask = _context.ProjectTasks.Include(t => t.UserJourney)
+        //            .Include(t => t.Status)
+        //            .Include(t => t.Priority)
+        //        .Include(t=>t.UserJourney.Sprint)
+        //        .Include(t=>t.UserJourney.Sprint.Release)
+        //        .Include(t=>t.UserJourney.Sprint.Release.Project)
+        //        .SingleOrDefault(p => p.Id == id);
+        //    if (projectTask == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+
+        //    return View(projectTask);
+        //}
+
         public ActionResult Details(int id)
         {
             var projectTask = _context.ProjectTasks.Include(t => t.UserJourney)
-                    .Include(t => t.Status)
-                    .Include(t => t.Priority)
-                .Include(t=>t.UserJourney.Sprint)
-                .Include(t=>t.UserJourney.Sprint.Release)
-                .Include(t=>t.UserJourney.Sprint.Release.Project)
+                .Include(t => t.Status)
+                .Include(t => t.Priority)
+                .Include(t => t.UserJourney.Sprint)
+                .Include(t => t.UserJourney.Sprint.Release)
+                .Include(t => t.UserJourney.Sprint.Release.Project)
                 .SingleOrDefault(p => p.Id == id);
             if (projectTask == null)
             {
                 return HttpNotFound();
             }
 
-            return View(projectTask);
+            var viewModel = new ProjectTaskViewModel
+            {
+                ProjectTask = projectTask,
+                Times = _context.Times.Where(t => t.TaskId == id)
+            };
+
+            return View("ProjectTaskView", viewModel);
         }
 
         public ActionResult Delete(int id)

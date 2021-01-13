@@ -107,6 +107,17 @@ namespace Planny.Controllers
 
 
 
+        //public ActionResult Details(int id)
+        //{
+        //    var userJourney = _context.UserJourneys.Include(s => s.Sprint).Include(s => s.Sprint.Release).Include(s => s.Sprint.Release.Project).SingleOrDefault(p => p.Id == id);
+        //    if (userJourney == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+
+        //    return View(userJourney);
+        //}
+
         public ActionResult Details(int id)
         {
             var userJourney = _context.UserJourneys.Include(s => s.Sprint).Include(s => s.Sprint.Release).Include(s => s.Sprint.Release.Project).SingleOrDefault(p => p.Id == id);
@@ -115,7 +126,16 @@ namespace Planny.Controllers
                 return HttpNotFound();
             }
 
-            return View(userJourney);
+            var viewModel = new UserJourneyViewModel
+            {
+                UserJourney = userJourney,
+                ProjectTasks = _context.ProjectTasks
+                    .Include(t=>t.Status)
+                    .Include(t=>t.Priority)
+                    .Where(t => t.UserJourneyId == id)
+            };
+
+            return View("UserJourneyView", viewModel);
         }
 
         public ActionResult Delete(int id)

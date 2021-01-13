@@ -5,6 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Web;
 using System.Web.Mvc;
 using Planny.Models;
+using Planny.ViewModel;
 
 namespace Planny.Controllers
 {
@@ -69,6 +70,16 @@ namespace Planny.Controllers
 
      
 
+        //public ActionResult Details(int id)
+        //{
+        //    var project = _context.Projects.SingleOrDefault(p => p.Id == id);
+        //    if (project == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+
+        //    return View(project);
+        //}
         public ActionResult Details(int id)
         {
             var project = _context.Projects.SingleOrDefault(p => p.Id == id);
@@ -77,7 +88,13 @@ namespace Planny.Controllers
                 return HttpNotFound();
             }
 
-            return View(project);
+            var viewModel = new ProjectViewModel
+            {
+                Project = project,
+                Releases = _context.Releases.Where(r => r.ProjectId == id)
+            };
+
+            return View("ProjectView", viewModel);
         }
 
         public ActionResult Delete(int id)

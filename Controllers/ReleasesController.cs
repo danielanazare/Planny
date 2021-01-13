@@ -100,6 +100,16 @@ namespace Planny.Controllers
 
 
 
+        //public ActionResult Details(int id)
+        //{
+        //    var release = _context.Releases.Include(r => r.Project).SingleOrDefault(p => p.Id == id);
+        //    if (release == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+
+        //    return View(release);
+        //}
         public ActionResult Details(int id)
         {
             var release = _context.Releases.Include(r => r.Project).SingleOrDefault(p => p.Id == id);
@@ -108,7 +118,13 @@ namespace Planny.Controllers
                 return HttpNotFound();
             }
 
-            return View(release);
+            var viewModel = new ReleaseViewModel
+            {
+                Release = release,
+                Sprintses = _context.Sprint.Where(s => s.ReleaseId == id)
+            };
+
+            return View("ReleaseView", viewModel);
         }
 
         public ActionResult Delete(int id)

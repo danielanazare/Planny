@@ -1,0 +1,74 @@
+﻿@model Planny.ViewModel.ProjectTaskViewModel
+@{
+    ViewBag.Title = "ProjectTaskView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Task: @String.Format("{0} {1}", @Model.ProjectTask.Id, @Model.ProjectTask.Name)</h2>
+<p>Description: @Model.ProjectTask.Description</p>
+<p>Status: @Model.ProjectTask.Status.Name</p>
+<p>Priority: @Model.ProjectTask.Priority.Name</p>
+
+<p>
+    User Journey:
+    @Html.ActionLink(@Model.ProjectTask.UserJourney.Name, "Details", "UserJourneys", new { id = @Model.ProjectTask.UserJourneyId }, null)
+</p>
+<p>
+    Sprint:
+    @Html.ActionLink(@Model.ProjectTask.UserJourney.Sprint.Name, "Details", "Sprints", new { id = @Model.ProjectTask.UserJourney.SprintId }, null)
+</p>
+<p>
+    Release:
+    @Html.ActionLink(@Model.ProjectTask.UserJourney.Sprint.Release.Name, "Details", "Releases", new { id = @Model.ProjectTask.UserJourney.Sprint.ReleaseId }, null)
+</p>
+<p>
+    Project:
+    @Html.ActionLink(@Model.ProjectTask.UserJourney.Sprint.Release.Project.Name, "Details", "Projects", new { id = @Model.ProjectTask.UserJourney.Sprint.Release.ProjectId }, null)
+</p>
+
+
+<h3>Times</h3>
+
+<p>
+    @Html.ActionLink("New Time", "New", "Times", null, new { @class = "btn btn-success" })
+</p>
+
+@if (@Model.Times.Count() == 0)
+{
+    <h2>No Times.</h2>
+}
+else
+{
+    <table class="table table-striped table-hover ">
+        <thead>
+        <th>Date</th>
+        <th>Time Spent</th>
+        <th>Description</th>
+        <th>Task</th>
+        <th>View</th>
+        </thead>
+        <tbody>
+        @foreach (var Time in @Model.Times)
+        {
+            <tr>
+                <td>@Time.Date</td>
+                <td>@Time.TimeSpent h</td>
+                <td>@Time.Description</td>
+                <td>
+                    @Html.ActionLink(@Time.Task.Name, "Details", "ProjectTasks", new { id = @Time.TaskId }, null)
+                </td>
+                <td>
+                    @Html.ActionLink("View", "Details", "Times", new { id = @Time.Id }, null)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Times", new { id = @Time.Id }, null)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", "Times", new { id = @Time.Id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+
+        }
+        </tbody>
+    </table>
+}
