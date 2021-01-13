@@ -74,5 +74,18 @@ namespace Planny.Controllers
 
             return View(status);
         }
+
+        public ActionResult Delete(int id)
+        {
+            var statusInDb = _context.Status.SingleOrDefault(d => d.Id == id);
+
+            if (statusInDb == null)
+                return HttpNotFound();
+
+            _context.Status.Remove(statusInDb);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Status");
+        }
     }
 }

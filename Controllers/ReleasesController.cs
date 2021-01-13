@@ -101,5 +101,18 @@ namespace Planny.Controllers
 
             return View(release);
         }
+
+        public ActionResult Delete(int id)
+        {
+            var releaseInDb = _context.Releases.SingleOrDefault(d => d.Id == id);
+
+            if (releaseInDb == null)
+                return HttpNotFound();
+
+            _context.Releases.Remove(releaseInDb);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Releases");
+        }
     }
 }

@@ -8,7 +8,7 @@
 
 <h2>Sprints</h2>
 <p>
-    @Html.ActionLink("New Sprint", "New", "Sprints", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("New Sprint", "New", "Sprints", null, new { @class = "btn btn-success" })
 </p>
 @if (!@Model.Any())
 {
@@ -41,6 +41,9 @@ else
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", "Sprints", new { id = @Sprint.Id }, null)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", "Sprints", new { id = @Sprint.Id }, new { @class = "btn btn-danger" })
                 </td>
 
             </tr>

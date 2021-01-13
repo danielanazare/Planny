@@ -7,7 +7,7 @@
 <h2>Priorities</h2>
 
 <p>
-    @Html.ActionLink("New Priority", "New", "Priorities", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("New Priority", "New", "Priorities", null, new { @class = "btn btn-success" })
 </p>
 
 @if (!@Model.Any())
@@ -30,6 +30,9 @@ else
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", "Priorities", new { id = @Priority.Id }, null)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", "Priorities", new {id = @Priority.Id}, new {@class = "btn btn-danger"})
                 </td>
             </tr>
         

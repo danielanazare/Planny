@@ -10,7 +10,7 @@
 <h2>Tasks</h2>
 
 <p>
-    @Html.ActionLink("New Task", "New", "ProjectTasks", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("New Task", "New", "ProjectTasks", null, new { @class = "btn btn-success" })
 </p>
 
 @if (!@Model.Any())
@@ -40,6 +40,9 @@ else
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", "ProjectTasks", new { id = @Task.Id }, null)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", "ProjectTasks", new { id = @Task.Id }, new { @class = "btn btn-danger" })
                 </td>
 
             </tr>
