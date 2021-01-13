@@ -42,6 +42,15 @@ namespace Planny.Controllers
         [HttpPost]
         public ActionResult Save(Release release)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new ReleaseFormViewModel
+                {
+                    Release = release,
+                    Projects = _context.Projects.ToList()
+                };
+                return View("ReleaseForm", viewModel);
+            }
 
             if (release.Id == 0)
             {

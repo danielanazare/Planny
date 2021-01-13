@@ -33,6 +33,11 @@ namespace Planny.Controllers
         [HttpPost]
         public ActionResult Save(Status status)
         {
+            if (!ModelState.IsValid)
+            {
+                
+                return View("StatusForm", status);
+            }
             if (status.Id == 0)
             {
                 _context.Status.Add(status); //just in the memory

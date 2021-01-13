@@ -39,7 +39,15 @@ namespace Planny.Controllers
         [HttpPost]
         public ActionResult Save(Time time)
         {
-
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new TimeFormViewModel
+                {
+                    Time = time,
+                    ProjectTasks = _context.ProjectTasks.ToList()
+                };
+                return View("TimeForm", viewModel);
+            }
             if (time.Id == 0)
             {
                 _context.Times.Add(time); //just in the memory

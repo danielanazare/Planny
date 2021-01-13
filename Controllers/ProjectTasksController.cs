@@ -44,6 +44,17 @@ namespace Planny.Controllers
         [HttpPost]
         public ActionResult Save(ProjectTask projectTask)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new ProjectTaskFormViewModel
+                {
+                    ProjectTask = projectTask,
+                    UserJourneys = _context.UserJourneys.ToList(),
+                    Statuses = _context.Status.ToList(),
+                    Priorities = _context.Priority.ToList()
+                };
+                return View("ProjectTaskForm", viewModel);
+            }
 
             if (projectTask.Id == 0)
             {

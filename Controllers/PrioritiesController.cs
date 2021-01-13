@@ -32,6 +32,10 @@ namespace Planny.Controllers
         [HttpPost]
         public ActionResult Save(Priority priority)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("PriorityForm", priority);
+            }
             if (priority.Id == 0)
             {
                 _context.Priority.Add(priority); //just in the memory

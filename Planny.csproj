@@ -237,8 +237,13 @@
     <Compile Include="Migrations\202101130226173_ProjectTaskNullableAttributes.Designer.cs">
       <DependentUpon>202101130226173_ProjectTaskNullableAttributes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101130420408_DataAnnotations.cs" />
+    <Compile Include="Migrations\202101130420408_DataAnnotations.Designer.cs">
+      <DependentUpon>202101130420408_DataAnnotations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\CustomVal.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Priority.cs" />
@@ -396,6 +401,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101130226173_ProjectTaskNullableAttributes.resx">
       <DependentUpon>202101130226173_ProjectTaskNullableAttributes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101130420408_DataAnnotations.resx">
+      <DependentUpon>202101130420408_DataAnnotations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

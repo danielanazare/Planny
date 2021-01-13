@@ -13,11 +13,14 @@
     <div class="form-group">
         @Html.LabelFor(m => m.ProjectTask.Name)
         @Html.TextBoxFor(m => m.ProjectTask.Name, new { @class = "form-control" })
-    </div>
+        @Html.ValidationMessageFor(m=>m.ProjectTask.Name)
+        </div>
     <div class="form-group">
         @Html.LabelFor(m => m.ProjectTask.Description)
         @Html.TextBoxFor(m => m.ProjectTask.Description, new { @class = "form-control" })
-    </div>
+        @Html.ValidationMessageFor(m=>m.ProjectTask.Description)
+
+        </div>
     <div class="form-group">
         @Html.LabelFor(m => m.ProjectTask.StatusId)
         @Html.DropDownListFor(m => m.ProjectTask.StatusId, new SelectList(Model.Statuses, "Id", "Name"), new { @class = "form-control" })

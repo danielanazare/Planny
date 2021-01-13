@@ -13,10 +13,13 @@
     <div class="form-group">
         @Html.LabelFor(m => m.UserJourney.Name)
         @Html.TextBoxFor(m => m.UserJourney.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.UserJourney.Name)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.UserJourney.Description)
         @Html.TextBoxFor(m => m.UserJourney.Description, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.UserJourney.Description)
+
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.UserJourney.StatusId)

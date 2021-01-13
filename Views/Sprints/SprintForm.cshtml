@@ -13,14 +13,19 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Sprint.Name)
         @Html.TextBoxFor(m => m.Sprint.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.Sprint.Name)
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Sprint.StartDate)
         @Html.TextBoxFor(m => m.Sprint.StartDate, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.Sprint.StartDate)
+
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Sprint.EndDate)
         @Html.TextBoxFor(m => m.Sprint.EndDate, "{0:d MMM yyyy}", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.Sprint.EndDate)
+
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Sprint.Effort)
@@ -33,6 +38,8 @@
     <div class="form-group">
         @Html.LabelFor(m => m.Sprint.Progress)
         @Html.TextBoxFor(m => m.Sprint.Progress, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m=>m.Sprint.Progress)
+
     </div>
     <div class="form-group">
         @Html.LabelFor(m => m.Sprint.ReleaseId)

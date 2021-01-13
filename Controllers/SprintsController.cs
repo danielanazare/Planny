@@ -40,6 +40,15 @@ namespace Planny.Controllers
         [HttpPost]
         public ActionResult Save(Sprint sprint)
         {
+            if (!ModelState.IsValid)
+            {
+                var viewModel = new SprintFormViewModel
+                {
+                    Sprint = sprint,
+                    Releases = _context.Releases.ToList()
+                };
+                return View("SprintForm", viewModel);
+            }
 
             if (sprint.Id == 0)
             {

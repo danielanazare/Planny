@@ -30,6 +30,10 @@ namespace Planny.Controllers
         [HttpPost]
         public ActionResult Save(Project project)
         {
+            if (!ModelState.IsValid)
+            {
+                return View("ProjectForm", project);
+            }
             if (project.Id == 0)
             {
                 _context.Projects.Add(project); //just in the memory
