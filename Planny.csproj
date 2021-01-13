@@ -233,6 +233,10 @@
     <Compile Include="Migrations\202101130158198_SprintNullableAttributes.Designer.cs">
       <DependentUpon>202101130158198_SprintNullableAttributes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101130226173_ProjectTaskNullableAttributes.cs" />
+    <Compile Include="Migrations\202101130226173_ProjectTaskNullableAttributes.Designer.cs">
+      <DependentUpon>202101130226173_ProjectTaskNullableAttributes.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -385,6 +389,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202101130158198_SprintNullableAttributes.resx">
       <DependentUpon>202101130158198_SprintNullableAttributes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101130226173_ProjectTaskNullableAttributes.resx">
+      <DependentUpon>202101130226173_ProjectTaskNullableAttributes.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

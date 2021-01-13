@@ -9,6 +9,10 @@
 
 <h2>Tasks</h2>
 
+<p>
+    @Html.ActionLink("New Task", "New", "ProjectTasks", null, new { @class = "btn btn-primary" })
+</p>
+
 @if (!@Model.Any())
 {
     <h2>No Tasks.</h2>
@@ -19,6 +23,7 @@ else
         <thead>
         <th>Name</th>
         <th>Status</th>
+        <th>Priority</th>
         <th>User Journey</th>
         </thead>
         <tbody>
@@ -26,13 +31,17 @@ else
         {
             <tr>
                 <td>
-                    @Html.ActionLink(@Task.Id + " " + @Task.Name, "Details", "ProjectTasks", new {id = @Task.Id}, null)
+                    @Html.ActionLink(@Task.Id + " " + @Task.Name, "Details", "ProjectTasks", new { id = @Task.Id }, null)
                 </td>
-                <td>@Task.Status</td>
+                <td>@Task.Status.Name</td>
+                <td>@Task.Priority.Name</td>
                 <td>
-                    @Html.ActionLink(@Task.UserJourney.Name, "Details", "UserJourneys", new { id = @Task.UserJourneyId}, null)
+                    @Html.ActionLink(@Task.UserJourney.Name, "Details", "UserJourneys", new { id = @Task.UserJourneyId }, null)
                 </td>
-                
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "ProjectTasks", new { id = @Task.Id }, null)
+                </td>
+
             </tr>
         
         }
