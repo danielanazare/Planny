@@ -4,7 +4,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>statuses</h2>
+<h2>Status</h2>
+
+<p>
+    @Html.ActionLink("New Status", "New", "Status", null, new { @class = "btn btn-primary" })
+</p>
 
 @if (!@Model.Any())
 {
@@ -21,8 +25,10 @@ else
             {
                 <tr>
                     <td>
-                        @*@Project.Name*@
                         @Html.ActionLink(@Status.Name, "Details", "Status", new { id = @Status.Id }, null)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Status", new { id = @Status.Id }, null)
                     </td>
                 </tr>
 

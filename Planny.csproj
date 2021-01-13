@@ -335,6 +335,8 @@
     <Content Include="Views\Sprints\SprintForm.cshtml" />
     <Content Include="Views\UserJourneys\UserJourneyForm.cshtml" />
     <Content Include="Views\Times\TimeForm.cshtml" />
+    <Content Include="Views\Status\StatusForm.cshtml" />
+    <Content Include="Views\Priorities\PriorityForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

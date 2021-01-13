@@ -44,6 +44,14 @@ namespace Planny.Controllers
 
             return RedirectToAction("Index", "Projects");
         }
+        public ActionResult Edit(int id)
+        {
+            var project = _context.Projects.SingleOrDefault(p => p.Id == id);
+            if (project == null)
+                return HttpNotFound();
+            return View("ProjectForm", project);
+        }
+
         public ActionResult Index()
         {
             var projects = _context.Projects;
@@ -64,12 +72,6 @@ namespace Planny.Controllers
             return View(project);
         }
 
-        public ActionResult Edit(int id)
-        {
-            var project = _context.Projects.SingleOrDefault(p => p.Id == id);
-            if (project == null)
-                return HttpNotFound();
-            return View("ProjectForm", project);
-        }
+       
     }
 }

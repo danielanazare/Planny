@@ -1,0 +1,24 @@
+﻿@model Planny.Models.Priority
+@{
+    ViewBag.Title = "PriorityForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Title Priority</h2>
+
+
+@using (Html.BeginForm("Save", "Priorities"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Name)
+        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+    </div>
+    @Html.HiddenFor(m => m.Id)
+
+    <button class="btn btn-primary">Save</button>
+
+}
+
+
+
+

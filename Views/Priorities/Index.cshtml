@@ -6,6 +6,10 @@
 
 <h2>Priorities</h2>
 
+<p>
+    @Html.ActionLink("New Priority", "New", "Priorities", null, new { @class = "btn btn-primary" })
+</p>
+
 @if (!@Model.Any())
 {
     <h2>No priorities.</h2>
@@ -22,7 +26,10 @@ else
             <tr>
                 <td>
                     @*@Project.Name*@
-                    @Html.ActionLink(@Priority.Name, "Details", "Priorities", new {id = @Priority.Id}, null)
+                    @Html.ActionLink(@Priority.Name, "Details", "Priorities", new { id = @Priority.Id }, null)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Priorities", new { id = @Priority.Id }, null)
                 </td>
             </tr>
         
