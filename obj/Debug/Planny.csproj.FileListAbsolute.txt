@@ -120,3 +120,4 @@ G:\Proiect DAW\Planny\obj\Debug\Planny.Migrations.AddReleaseName.resources
 G:\Proiect DAW\Planny\obj\Debug\Planny.Migrations.ReleaseProject.resources
 G:\Proiect DAW\Planny\obj\Debug\Planny.Migrations.AddSprintName.resources
 G:\Proiect DAW\Planny\obj\Debug\Planny.Migrations.SprintNullableAttributes.resources
+G:\Proiect DAW\Planny\obj\Debug\Planny.Migrations.ProjectTaskNullableAttributes.resources

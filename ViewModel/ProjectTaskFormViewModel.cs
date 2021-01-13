@@ -12,5 +12,16 @@ namespace Planny.ViewModel
         public ProjectTask ProjectTask { get; set; }
         public IEnumerable<Priority> Priorities { get; set; }
         public IEnumerable<UserJourney> UserJourneys { get; set; }
+
+        public string Title
+        {
+            get
+            {
+                if (ProjectTask != null && ProjectTask.Id != 0)
+                    return "Edit Task";
+
+                return "New Task";
+            }
+        }
     }
 }

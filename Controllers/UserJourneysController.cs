@@ -29,13 +29,13 @@ namespace Planny.Controllers
         {
             var sprints = _context.Sprint.ToList();
             var statuses = _context.Status.ToList();
-            var prioritites = _context.Priority.ToList();
+            var priorities = _context.Priority.ToList();
 
             var viewModel = new UserJourneyFormViewModel()
             {
                 Sprints = sprints,
                 Statuses = statuses,
-                Priorities = prioritites
+                Priorities = priorities
             };
             return View("UserJourneyForm", viewModel);
         }
