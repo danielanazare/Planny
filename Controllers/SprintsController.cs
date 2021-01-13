@@ -103,5 +103,18 @@ namespace Planny.Controllers
 
             return View(sprint);
         }
+
+        public ActionResult Delete(int id)
+        {
+            var sprintInDb = _context.Sprint.SingleOrDefault(d => d.Id == id);
+
+            if (sprintInDb == null)
+                return HttpNotFound();
+
+            _context.Sprint.Remove(sprintInDb);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Sprints");
+        }
     }
 }

@@ -116,6 +116,19 @@ namespace Planny.Controllers
 
             return View(projectTask);
         }
+
+        public ActionResult Delete(int id)
+        {
+            var projectTaskInDb = _context.ProjectTasks.SingleOrDefault(d => d.Id == id);
+
+            if (projectTaskInDb == null)
+                return HttpNotFound();
+
+            _context.ProjectTasks.Remove(projectTaskInDb);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "ProjectTasks");
+        }
     }
 }
 

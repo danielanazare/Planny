@@ -9,7 +9,7 @@
 <h2>User Journeys</h2>
 
 <p>
-    @Html.ActionLink("New User Journey", "New", "UserJourneys", null, new { @class = "btn btn-primary" })
+    @Html.ActionLink("New User Journey", "New", "UserJourneys", null, new { @class = "btn btn-success" })
 </p>
 
 @if (!@Model.Any())
@@ -49,6 +49,9 @@ else
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", "UserJourneys", new { id = @UserJourney.Id }, null)
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", "UserJourneys", new { id = @UserJourney.Id }, new { @class = "btn btn-danger" })
                 </td>
 
             </tr>

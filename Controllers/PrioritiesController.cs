@@ -72,5 +72,18 @@ namespace Planny.Controllers
 
             return View(priority);
         }
+
+        public ActionResult Delete(int id)
+        {
+            var priorityInDb = _context.Priority.SingleOrDefault(d => d.Id == id);
+
+            if (priorityInDb == null)
+                return HttpNotFound();
+
+            _context.Priority.Remove(priorityInDb);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Priorities");
+        }
     }
 }

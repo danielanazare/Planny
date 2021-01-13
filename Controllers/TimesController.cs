@@ -106,5 +106,18 @@ namespace Planny.Controllers
 
             return View(time);
         }
+
+        public ActionResult Delete(int id)
+        {
+            var timeInDb = _context.Times.SingleOrDefault(d => d.Id == id);
+
+            if (timeInDb == null)
+                return HttpNotFound();
+
+            _context.Times.Remove(timeInDb);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Times");
+        }
     }
 }

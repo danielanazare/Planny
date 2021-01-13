@@ -106,5 +106,18 @@ namespace Planny.Controllers
 
             return View(userJourney);
         }
+
+        public ActionResult Delete(int id)
+        {
+            var userJourneyInDb = _context.UserJourneys.SingleOrDefault(d => d.Id == id);
+
+            if (userJourneyInDb == null)
+                return HttpNotFound();
+
+            _context.UserJourneys.Remove(userJourneyInDb);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "UserJourneys");
+        }
     }
 }
