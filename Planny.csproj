@@ -254,6 +254,7 @@
     <Compile Include="ViewModel\ProjectTaskFormViewModel.cs" />
     <Compile Include="ViewModel\ReleaseFormViewModel.cs" />
     <Compile Include="ViewModel\SprintFormViewModel.cs" />
+    <Compile Include="ViewModel\TimeFormViewModel.cs" />
     <Compile Include="ViewModel\UserJourneyFormViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -333,6 +334,7 @@
     <Content Include="Views\Releases\ReleaseForm.cshtml" />
     <Content Include="Views\Sprints\SprintForm.cshtml" />
     <Content Include="Views\UserJourneys\UserJourneyForm.cshtml" />
+    <Content Include="Views\Times\TimeForm.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

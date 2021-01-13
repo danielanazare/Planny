@@ -10,8 +10,9 @@ namespace Planny.Models
     public class Time
     {
         public int Id { get; set; }
-        [Required]
+        
         public ProjectTask Task { get; set; }
+        [Required]
         public int TaskId { get; set; }
         [Required]
         public DateTime Date { get; set; }
