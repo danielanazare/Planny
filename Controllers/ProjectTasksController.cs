@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Web;
 using System.Web.Mvc;
 using Planny.Models;
+using Planny.ViewModel;
 
 namespace Planny.Controllers
 {
@@ -23,6 +24,29 @@ namespace Planny.Controllers
         protected override void Dispose(bool disposing)
         {
             _context.Dispose();
+        }
+
+        public ActionResult New()
+        {
+            var statuses = _context.Status.ToList();
+            var priorities = _context.Priority.ToList();
+            var userJourneys = _context.UserJourneys.ToList();
+            var viewModel = new ProjectTaskFormViewModel
+            {
+                Statuses = statuses,
+                Priorities = priorities,
+                UserJourneys = userJourneys
+            };
+            return View("ProjectTaskForm", viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Save(ProjectTask task)
+        {
+            _context.ProjectTasks.Add(task); //just in the memory
+            _context.SaveChanges(); //wraps changes in a transaction
+
+            return RedirectToAction("Index", "ProjectTasks");
         }
 
         public ActionResult Index()

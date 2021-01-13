@@ -12,8 +12,9 @@ namespace Planny.Models
         [Required]
         [StringLength(255)]
         public string Name { get; set; }
-        [Required]
+        
         public Sprint Sprint { get; set; }
+        [Required]
         public int SprintId { get; set; }
         [Required]
         [StringLength(1000)]

@@ -20,6 +20,7 @@ namespace Planny.Models
         public int UserJourneyId { get; set; }
         [Required]
         [StringLength(1000)]
+        [Display(Name = "Description")] //exemplu
         public string Description { get; set; }
 
         public Status Status { get; set; }

@@ -1,0 +1,43 @@
+﻿@model Planny.ViewModel.UserJourneyFormViewModel
+@{
+    ViewBag.Title = "UserJourneyForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@Model.Title</h2>
+
+
+@* renders <form and </form> *@
+@using (Html.BeginForm("Save", "UserJourneys"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.UserJourney.Name)
+        @Html.TextBoxFor(m => m.UserJourney.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.UserJourney.Description)
+        @Html.TextBoxFor(m => m.UserJourney.Description, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.UserJourney.StatusId)
+        @Html.DropDownListFor(m => m.UserJourney.StatusId, new SelectList(Model.Statuses, "Id", "Name"), new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.UserJourney.PriorityId)
+        @Html.DropDownListFor(m => m.UserJourney.PriorityId, new SelectList(Model.Priorities, "Id", "Name"), new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.UserJourney.SprintId)
+        @Html.DropDownListFor(m => m.UserJourney.SprintId, new SelectList(Model.Sprints, "Id", "Name"), new { @class = "form-control" })
+    </div>
+
+    @Html.HiddenFor(m => m.UserJourney.Id)
+
+
+    <button class="btn btn-primary">Save</button>
+
+}
+
+
+
+

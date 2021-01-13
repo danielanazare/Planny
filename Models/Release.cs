@@ -12,8 +12,9 @@ namespace Planny.Models
         [Required]
         [StringLength(255)]
         public string Name { get; set; }
-        [Required]
+        
         public Project Project { get; set; }
+        [Required]
         public int ProjectId { get; set; }
         [Required]
         public DateTime StartDate { get; set; }

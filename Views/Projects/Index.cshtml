@@ -8,7 +8,9 @@
 }
 
 <h2>Projects</h2>
-
+<p>
+    @Html.ActionLink("New Project", "New", "Projects", null, new { @class = "btn btn-primary"})
+</p>
 @if (!@Model.Any())
 {
     <h2>No projects.</h2>
