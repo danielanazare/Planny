@@ -1,0 +1,35 @@
+﻿@model Planny.ViewModel.ReleaseFormViewModel
+@{
+    ViewBag.Title = "ReleaseForm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Release</h2>
+
+
+@* renders <form and </form> *@
+@using (Html.BeginForm("Save", "Releases"))
+{
+    <div class="form-group">
+        @Html.LabelFor(m => m.Release.Name)
+        @Html.TextBoxFor(m => m.Release.Name, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Release.StartDate)
+        @Html.TextBoxFor(m => m.Release.StartDate, "{0:d MMM yyyy}", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Release.EndDate)
+        @Html.TextBoxFor(m => m.Release.EndDate, "{0:d MMM yyyy}", new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => m.Release.ProjectId)
+        @Html.DropDownListFor(m => m.Release.ProjectId, new SelectList(Model.Projects, "Id", "Name"), new { @class = "form-control" })
+    </div>
+
+    @Html.HiddenFor(m => m.Release.Id)
+
+
+    <button class="btn btn-primary">Save</button>
+
+}

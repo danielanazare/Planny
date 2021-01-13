@@ -25,7 +25,11 @@ else
             <tr>
                 <td>
                     @*@Project.Name*@
-                    @Html.ActionLink(@Project.Name, "Details", "Projects", new {id = @Project.Id}, null)
+                    @Html.ActionLink(@Project.Name, "Details", "Projects", new { id = @Project.Id }, null)
+                </td>
+                <td>
+                    @*@Project.Name*@
+                    @Html.ActionLink("Edit", "Edit", "Projects", new { id = @Project.Id }, null)
                 </td>
             </tr>
         
